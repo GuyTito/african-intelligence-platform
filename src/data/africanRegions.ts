@@ -1,7 +1,8 @@
 export const africanRegions = [
   {
     id: "",
-    code: "AFR",
+    // code: "AFR",
+    code: "AFE;AFW",
     iso2code: "A9",
     name: "Africa",
   },

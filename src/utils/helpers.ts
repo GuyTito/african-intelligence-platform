@@ -9,3 +9,14 @@ export function getQueryString(obj?: Record<string, any>) {
     )
     .join("&");
 }
+
+// convert array of object to array of options with value and label keys. you can pass which key to use as value and label
+export function convertToOptions(
+  array: Record<string, any>[],
+  { valueKey = "code", labelKey = "name" } = {},
+) {
+  return array?.map((item) => ({
+    value: item[valueKey],
+    label: item[labelKey],
+  }));
+}

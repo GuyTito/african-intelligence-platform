@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router';
+import { useSearchParams } from "react-router";
 
 // Custom hook to handle object state in the URL
 export function useUrlState<T extends Record<string, any>>(initialState: T) {
@@ -9,7 +9,7 @@ export function useUrlState<T extends Record<string, any>>(initialState: T) {
     const updatedParams = new URLSearchParams(searchParams);
 
     Object.entries(newState).forEach(([key, value]) => {
-      if (value !== null && value !== undefined && value !== '') {
+      if (value !== null && value !== undefined && value !== "") {
         updatedParams.set(key, String(value)); // Set the value if it's not null, undefined, or empty string
       } else {
         updatedParams.delete(key); // Remove the key otherwise

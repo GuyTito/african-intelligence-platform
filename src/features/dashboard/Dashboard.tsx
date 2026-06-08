@@ -14,6 +14,30 @@ export default function Dashboard() {
         <TopEconomies />
       </div>
       <MacroeconomicTable />
+
+      <footer className="border-t border-slate-800 bg-slate-900 mt-12 py-8">
+        <div className="px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-slate-500 text-sm">
+            © 2026 African Economic Intelligence. Data sourced from World Bank
+            Open Data.
+          </div>
+          <div className="flex gap-6 text-sm font-medium text-slate-400">
+            <a
+              href="https://datahelpdesk.worldbank.org/knowledgebase/topics/125589-developer-information"
+              target="_blank"
+              className="hover:text-white transition-colors"
+            >
+              API Access
+            </a>
+            <a
+              href="https://github.com/guytito"
+              className="hover:text-white transition-colors"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

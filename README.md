@@ -8,9 +8,11 @@ The application lets users select an African region or country, choose a year, a
 
 - Fetches African country and regional data from the World Bank API.
 - Displays headline economic KPIs in a responsive dashboard.
+- Shows GDP growth trends across major African economies.
+- Shows a top economies bar chart using the latest available GDP values.
 - Stores selected filters in the URL so views can be shared or revisited.
 - Uses React Query to manage loading, caching, and parallel indicator requests.
-- Includes chart infrastructure with ECharts for future visual analysis.
+- Uses ECharts for dashboard visualizations.
 
 ## Current Indicators
 
@@ -24,6 +26,12 @@ The dashboard currently tracks:
 - FDI net inflows
 
 These indicators are mapped to official World Bank indicator codes in `src/data/worldBankIndicators.ts`.
+
+## Current Dashboard Views
+
+- KPI overview cards for a selected region or country and year.
+- GDP Growth Trajectory line chart for major African economies.
+- Top Economies horizontal bar chart ranked by latest available GDP.
 
 ## Tech Stack
 
@@ -93,6 +101,14 @@ https://api.worldbank.org/v2
 
 Country data comes from the African region endpoint, and metric data is fetched per country, year, and indicator.
 
+The API base URL can be overridden with:
+
+```bash
+VITE_WORLDBANK_API_URL=https://api.worldbank.org/v2
+```
+
+If the variable is not set, the app falls back to `https://api.worldbank.org/v2`.
+
 ## Status
 
-The project is in an early dashboard stage. KPI cards and World Bank data fetching are implemented, while chart-based analysis and deeper intelligence views are prepared for future development.
+The project is in an early dashboard stage. KPI cards, World Bank data fetching, GDP trend visualization, and top-economies ranking are implemented, with deeper intelligence views prepared for future development.

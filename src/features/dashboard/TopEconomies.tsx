@@ -3,19 +3,8 @@ import { ChartSkeleton } from "@/components/charts/ChartSkeleton";
 import type { EChartsOption } from "@/components/charts/echartsCore";
 import { useGetTopEconomies } from "@/hooks/useGetTopEconomies";
 import type { WorldBankItem } from "@/hooks/useGetGDPGrowthTrend";
+import { formatCurrency } from "@/utils/helpers";
 import { Landmark } from "lucide-react";
-
-const formatGDP = (value: number | null | undefined) => {
-  if (value === null || value === undefined || Number.isNaN(value)) return "N/A";
-
-  const absValue = Math.abs(value);
-
-  if (absValue >= 1e12) return `$${(value / 1e12).toFixed(1)}T`;
-  if (absValue >= 1e9) return `$${(value / 1e9).toFixed(1)}B`;
-  if (absValue >= 1e6) return `$${(value / 1e6).toFixed(1)}M`;
-
-  return `$${Math.round(value).toLocaleString("en-US")}`;
-};
 
 export function TopEconomies() {
   const { data, isLoading } = useGetTopEconomies();
@@ -67,7 +56,7 @@ function TopEconomiesChart({ apiData }: Props) {
       textStyle: { color: "#f8fafc" },
       axisPointer: { type: "shadow" },
       valueFormatter: (value) =>
-        typeof value === "number" ? formatGDP(value) : "N/A",
+        typeof value === "number" ? formatCurrency(value, "USD", 1) : "N/A",
     },
     grid: {
       top: "18%",
@@ -80,7 +69,7 @@ function TopEconomiesChart({ apiData }: Props) {
       axisLabel: {
         show: false,
         color: "#94a3b8",
-        formatter: (value: number) => formatGDP(value),
+        formatter: (value: number) => formatCurrency(value, "USD", 1),
       },
       splitLine: { lineStyle: { color: "#334155" } },
     },
@@ -105,7 +94,7 @@ function TopEconomiesChart({ apiData }: Props) {
           position: "right",
           color: "#cbd5e1",
           formatter: ({ value }) =>
-            typeof value === "number" ? formatGDP(value) : "N/A",
+            typeof value === "number" ? formatCurrency(value, "USD", 1) : "N/A",
         },
       },
     ],

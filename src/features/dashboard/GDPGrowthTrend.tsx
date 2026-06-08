@@ -1,11 +1,9 @@
 import { BaseChart } from "@/components/charts/BaseChart";
-import {
-  useGetGDPGrowthTrend,
-  type WorldBankItem,
-} from "@/hooks/useGetGDPGrowthTrend";
+import { useGetGDPGrowthTrend } from "@/hooks/useGetGDPGrowthTrend";
 import type { EChartsOption } from "@/components/charts/echartsCore";
 import { BarChart3 } from "lucide-react";
 import { ChartSkeleton } from "@/components/charts/ChartSkeleton";
+import type { WorldBankItem } from "@/types";
 
 export function GDPGrowthTrend() {
   const { data, isLoading } = useGetGDPGrowthTrend();

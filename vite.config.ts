@@ -7,7 +7,7 @@ import { fileURLToPath } from "url";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
-  base: "/african-economy-dashboard/",
+  base: "/african-intelligence-platform/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

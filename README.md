@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# African Intelligence Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An executive dashboard for exploring African economic indicators using World Bank data.
 
-Currently, two official plugins are available:
+The application lets users select an African region or country, choose a year, and view key macroeconomic metrics such as GDP, GDP growth, inflation, GDP per capita, population, and foreign direct investment net inflows.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## What It Does
 
-## React Compiler
+- Fetches African country and regional data from the World Bank API.
+- Displays headline economic KPIs in a responsive dashboard.
+- Stores selected filters in the URL so views can be shared or revisited.
+- Uses React Query to manage loading, caching, and parallel indicator requests.
+- Includes chart infrastructure with ECharts for future visual analysis.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Current Indicators
 
-## Expanding the ESLint configuration
+The dashboard currently tracks:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Total GDP
+- GDP growth
+- Inflation
+- GDP per capita
+- Total population
+- FDI net inflows
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+These indicators are mapped to official World Bank indicator codes in `src/data/worldBankIndicators.ts`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- TanStack React Query
+- Axios
+- ECharts
+- lucide-react
+
+## Project Structure
+
+```txt
+src/
+  components/          Reusable UI components and chart primitives
+  data/                African region and World Bank indicator constants
+  features/dashboard/  Dashboard layout, header, and KPI section
+  hooks/               Data-fetching hooks and URL state helpers
+  routes/              React Router route definitions
+  utils/               Formatting, API, and utility helpers
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project uses `pnpm`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Install dependencies:
+
+```bash
+pnpm install
 ```
+
+Start the development server:
+
+```bash
+pnpm dev
+```
+
+Build for production:
+
+```bash
+pnpm build
+```
+
+Run linting:
+
+```bash
+pnpm lint
+```
+
+Preview the production build:
+
+```bash
+pnpm preview
+```
+
+## Data Source
+
+Economic data is fetched from the World Bank API:
+
+```txt
+https://api.worldbank.org/v2
+```
+
+Country data comes from the African region endpoint, and metric data is fetched per country, year, and indicator.
+
+## Status
+
+The project is in an early dashboard stage. KPI cards and World Bank data fetching are implemented, while chart-based analysis and deeper intelligence views are prepared for future development.

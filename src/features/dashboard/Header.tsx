@@ -10,7 +10,7 @@ export function Header() {
           </div>
           <div>
             <h1 className="text-2xl font-bold text-white leading-tight">
-              African Economic Intelligence
+              African Economic Platform
             </h1>
             <p className="text-xs text-slate-400">
               Executive Overview Dashboard

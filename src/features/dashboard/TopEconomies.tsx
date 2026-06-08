@@ -2,7 +2,7 @@ import { BaseChart } from "@/components/charts/BaseChart";
 import { ChartSkeleton } from "@/components/charts/ChartSkeleton";
 import type { EChartsOption } from "@/components/charts/echartsCore";
 import { useGetTopEconomies } from "@/hooks/useGetTopEconomies";
-import type { WorldBankItem } from "@/hooks/useGetGDPGrowthTrend";
+import type { WorldBankItem } from "@/types";
 import { formatCurrency } from "@/utils/helpers";
 import { Landmark } from "lucide-react";
 

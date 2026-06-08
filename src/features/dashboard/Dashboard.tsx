@@ -2,6 +2,7 @@ import { Header } from "./Header";
 import { KPISection } from "./KPISection";
 import { GDPGrowthTrend } from "./GDPGrowthTrend";
 import { TopEconomies } from "./TopEconomies";
+import { MacroeconomicTable } from "./MacroeconomicTable";
 
 export default function Dashboard() {
   return (
@@ -12,6 +13,7 @@ export default function Dashboard() {
         <GDPGrowthTrend />
         <TopEconomies />
       </div>
+      <MacroeconomicTable />
     </div>
   );
 }

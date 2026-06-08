@@ -1,7 +1,7 @@
 import { worldBankIndicators } from "@/data/worldBankIndicators";
+import { axiosClient } from "@/utils/axios-client";
 import { isYear } from "@/utils/helpers";
 import { useQueries, useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 interface KPIQuery {
   query: {
@@ -11,11 +11,11 @@ interface KPIQuery {
   indicator: string;
 }
 export function useGetKPIMetrics({ query, indicator }: KPIQuery) {
-  const readyUrl = `https://api.worldbank.org/v2/country/${query.country}/indicator/${indicator}?date=${query.year}&format=json`;
+  const readyUrl = `country/${query.country}/indicator/${indicator}?date=${query.year}&format=json`;
 
   return useQuery({
     queryKey: ["metrics", query, indicator],
-    queryFn: () => axios.get(readyUrl).then((res) => res.data[1]),
+    queryFn: () => axiosClient.get(readyUrl).then((res) => res.data[1]),
     enabled: !!query.country && isYear(query.year),
   });
 }
@@ -27,9 +27,9 @@ export function useGetAllKPIMetrics({ query }: { query: KPIQuery["query"] }) {
     queries: indicators.map((indicator) => ({
       queryKey: ["metrics", query, indicator],
       queryFn: () =>
-        axios
+        axiosClient
           .get(
-            `https://api.worldbank.org/v2/country/${query.country}/indicator/${indicator}?date=${query.year}&format=json`,
+            `country/${query.country}/indicator/${indicator}?date=${query.year}&format=json`,
           )
           .then((res) => res.data[1]),
       enabled: !!query.country && isYear(query.year),

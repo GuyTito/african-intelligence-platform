@@ -30,7 +30,7 @@ export default function Dashboard() {
               API Access
             </a>
             <a
-              href="https://github.com/guytito"
+              href="https://github.com/guytito/african-intelligence-platform"
               className="hover:text-white transition-colors"
             >
               GitHub

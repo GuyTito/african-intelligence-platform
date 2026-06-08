@@ -1,6 +1,7 @@
 import { Header } from "./Header";
 import { KPISection } from "./KPISection";
 import { GDPGrowthTrend } from "./GDPGrowthTrend";
+import { TopEconomies } from "./TopEconomies";
 
 export default function Dashboard() {
   return (
@@ -9,6 +10,7 @@ export default function Dashboard() {
       <KPISection />
       <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <GDPGrowthTrend />
+        <TopEconomies />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { Input } from "@/components/Input";
 import { KPICard } from "@/components/KPICard";
 import { Select } from "@/components/Select";
 import { africanRegions } from "@/data/africanRegions";
@@ -31,12 +30,17 @@ const getValue = (data: any) => {
   return data[0].value;
 };
 
+const regions = convertToOptions(africanRegions);
+
+const YEAR_OPTIONS = ["2020", "2021", "2022", "2023", "2024", "2025"].map(
+  (year) => ({ value: year, label: year }),
+);
+const DEFAULT_YEAR = YEAR_OPTIONS[0]?.value;
+
 const initialQuery = {
   country: "",
-  year: "",
+  year: DEFAULT_YEAR,
 };
-
-const regions = convertToOptions(africanRegions);
 
 export function KPISection() {
   const { data: africanCountries, isLoading } = useGetAfricanCountries();
@@ -77,14 +81,16 @@ export function KPISection() {
           className="w-70"
           isLoading={isLoading}
         />
-        <Input
+        <Select
           label="Year"
           name="year"
+          options={YEAR_OPTIONS}
           value={query.year}
           onChange={(e: any) => setQuery({ year: e.target.value })}
-          type="number"
-          placeholder="Eg. 2024"
-          className="w-40"
+          placeholder="Year"
+          className="w-full sm:w-36"
+          isClearable={false}
+          isSearchable={false}
         />
       </div>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
